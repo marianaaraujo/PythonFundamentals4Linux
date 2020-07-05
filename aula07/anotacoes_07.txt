@@ -1,0 +1,47 @@
+Sobre os módulos:
+
+developer@developer:~/520/aula07$ python3
+Python 3.6.8 (default, Jan 14 2019, 11:02:34) 
+[GCC 8.0.1 20180414 (experimental) [trunk revision 259383]] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import modulo
+>>> modulo.somar(2,2)
+4
+>>> modulo.boas_vindas('Mariana')
+'Seja bem vindo Mariana'
+>>> from modulo import somar
+>>> somar(5,5)
+10
+
+from modulos import modulo --> Diretório modulos criado e arquivo modulo.py colocado lá dentro
+
+Criando ambiente virutal:
+
+pip3 install virtualenv
+sudo apt install virtualenv
+virtualenv -p /usr/bin/python3 amb1
+
+Acessar ambiente virtual:
+source amb1/bin/activate
+
+pip3 install flask 
+flask - framework para utilizar aplicação web
+
+Para ver o que está instalado no ambiente
+(amb1) developer@developer:~/520/aula07$ pip3 freeze
+Click==7.0
+Flask==1.1.1
+itsdangerous==1.1.0
+Jinja2==2.10.1
+MarkupSafe==1.1.1
+pkg-resources==0.0.0
+Werkzeug==0.15.4
+
+Para sair do ambiente:
+(amb1) developer@developer:~/520/aula07$ deactivate
+
+Cria arquivo com o que tem instalado no amb1
+(amb1) developer@developer:~/520/aula07$ pip3 freeze > requirements.txt
+
+Instalar as aplicações do amb1 no amb2
+(amb2) developer@developer:~/520/aula07$ pip3 install -r requirements.txt

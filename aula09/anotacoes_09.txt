@@ -1,0 +1,17 @@
+Instalar módulo do Postgres para o Python:
+sudo apt install python3-psycopg2
+
+print(cur.fetchone()) --> Retorna a primeira linha do retorno do select
+print(cur.fetchall()) --> Retorna todas as linhas do retorno do select
+
+Instalar módulo do mySql para o Python:
+sudo apt install python3-mysqldb
+
+Instalar módulo do MongoDB para o Python:
+sudo apt install python3-pymongo
+
+sudo systemctl disable mongodb --> Desabilita a opção do MongoDB subir sozinho ao ligar a máquina
+
+Instalar módulo do sqlalchemy para o Python (Uma das duas opções abaixo):
+pip3 install sqlalchemy
+sudo apt install python3-sqlalchemy

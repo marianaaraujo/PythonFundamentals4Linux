@@ -1,0 +1,8 @@
+Instalar paramiko
+pip3 install paramiko
+
+Instalar o Jupyter
+pip3 install jupyter
+
+Iniciar o Jupyter
+jupyter notebook --allow-root

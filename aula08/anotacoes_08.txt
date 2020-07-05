@@ -1,0 +1,72 @@
+Entrar como root
+
+mySQL
+
+systemctl status mysql
+systemctl start mysql: Subir o mysql
+systemctl stop mysql: Parar o mysql
+mysql -h localhost -u developer -p: Conectar no banco mysql
+mysql: conectar com root
+
+mysql> show databases; --> Mostra os bancos de dados
+mysql> create database projeto; --> Criar banco de dados
+mysql> grant all privileges on projeto.* to admin@localhost identified by '4linux' with grant option; --> Criar usuário já com grant
+mysql> flush privileges; --> Força a recarregar a política dos usuários
+
+root@developer:/home/developer# mysql -u admin -p
+
+mysql> use projeto; --> Muda para o banco que será utilizado
+mysql> show tables; --> Mostra as tabelas do banco
+mysql> create table usuarios(id integer primary key not null auto_increment, nome varchar(50) not null, dtnasc datetime not null); --> Criação de tabela
+mysql> describe usuarios; --> Mostra a estrutura da tabela
+mysql> insert into usuarios (nome, dtnasc) values ('João Alcântara', '1975-05-13'); --> Inserir dado na tabela
+mysql> update usuarios set dtnasc = '1984-04-13' where id = 3; --> Update na  base
+mysql> delete from usuarios where id = 1; --> Apagar da base
+
+Postgres
+systemctl status postgresql;
+systemctl start postgresql;
+systemctl stop postgresql;
+
+su - postgres --> postgresql utilizar o user postgres
+
+psql -h localhost -U postgres --> Acessar o postgresql
+psql --> Acessar com o usuário postgres
+
+postgres=# create user admin password '4linux'; --> Criar usuário
+postgres=# create database projeto owner admin; --> Criar banco de dados
+
+root@developer:/home/developer# psql -h localhost projeto -U admin --> Acessar o banco de dados projeto (Devemos sair do user postgres e voltar pro root)
+
+projeto=> \dt --> Listar tabelas do banco de dados
+projeto=> create table usuarios (id serial, nome varchar(50), dtnasc date); --> Criar tabela
+projeto=> \d usuarios --> Mostra estutura da tabela
+projeto=> insert into usuarios (nome, dtnasc) values ('João Alcântara', '1975-05-13'); --> Inserir na tabela
+projeto=> update usuarios set dtnasc = '1984-04-13' where id = 3; --> Update
+projeto=> delete from usuarios where id = 1; --> Delete
+
+MongoDB
+Coleção = Tabela
+Documento = Dados
+
+systemctl status mongodb
+systemctl start mongodb
+systemctl stop mongodb
+
+mongo --> Acessar o mongodb
+
+show dbs; --> Mostra os bancos de dados
+
+use projeto --> Entra no banco; Caso não exista, ele cria e entra
+
+db.pessoas.insert({_id:1,nome:'João',sobrenome:'das Neves', dtnasc:'1982-05-13'}) --> Insere os documentos na coleção pessoas; Caso não exista, ele cria e insere
+db.pessoas.find() --> Traz todos os documentos de uma coleção
+db.pessoas.find({_id:1}) --> Traz o documento de id = 1
+db.pessoas.remove({_id:1}) --> Remove o documento de id =1 
+db.pessoas.insert({nome:'Dito',sobrenome:'Alves', dtnasc:'1945-02-27'}) --> Inserção sem id, gera um id randômico
+db.pessoas.update({_id:2}, {$set:{dtnasc:'1975-02-27'}}) --> Update
+db.pessoas.update({_id:1}, {$set:{projetos:[{nome:'Projeto1', desc:'Primeiro projeto'}]}}) --> Update adicionando um novo documento com subdocumento
+db.pessoas.find({_id:1}).pretty() --> Mostra o documento identado
+db.pessoas.update({_id:1}, {$push:{projetos:{nome:'Projeto2', desc:'Segundo projeto'}}}) --> Adiciona o projeto 2 dentro de projetos
+db.pessoas.update({_id:1}, {$pull:{projetos:{nome:'Projeto2'}}}) --> Remove um sub documento
+db.pessoas.find().pretty() --> Mostra todos os documentos identados

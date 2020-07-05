@@ -1,0 +1,3 @@
+def __init__ - Construtor
+def __del__ - Destutor
+__proprietario - variável privada

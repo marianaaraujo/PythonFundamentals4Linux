@@ -1,0 +1,1 @@
+print(chr(x)) - Imprime o caractere correpondente na tabela ASCII

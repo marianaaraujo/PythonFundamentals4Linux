@@ -1,0 +1,11 @@
+@classmethod --> Método de classe - Método estático (Decorator)
+
+def setUp --> É executado antes de todos os testes
+
+@property --> Método que se comporta como propriedade de leitura
+
+Instalar behave:
+pip3 install behave
+
+Executar teste com behave:
+behave funcionalidade.feature
